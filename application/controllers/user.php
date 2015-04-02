@@ -8,17 +8,27 @@ class User extends CI_Controller {
 		$this->load->helper('url');
 		$this->load->library('session');
 		$this->load->model('model_user');
+
 	}
 
 	public function login(){
-		$data = $this->input->post();
+		if($this->session->userdata('user_id') == null){
+			$data = $this->input->post();
 
-		$user = $this->model_user->getUser($data);
-		print_r($user);
-		if($user != null){
-			$this->session->userdata('user_id', $user[0]['id']);
+			$user = $this->model_user->getUser($data);
+			if($user != null){
+				$this->session->set_userdata('user_id', $user[0]['id']);
+				header("location: ".base_url());
+			}else{
+				header("location: ".base_url());
+			}
 		}else{
-			header("location: ".base_url());
+			show_404();
 		}
+	}
+
+	public function logout(){
+		$this->session->set_userdata('user_id', null);
+		header("location: ".base_url());
 	}
 }

@@ -6,11 +6,18 @@ class Home extends CI_Controller {
 		parent::__construct();
 		$this->load->helper('url');
 		$this->load->library('session');
+/*
+		if ($this->session->userdata('user_id') != null) {
+            show_404();
+        }
+*/
 	}
 
 	public function index(){
-		$this->load->view('template/header');
-		$this->load->view('contents/home');
-		$this->load->view('template/footer');
+		$data['user_id'] = $this->session->userdata('user_id');
+
+		$this->load->view('template/header', $data);
+		$this->load->view('contents/home', $data);
+		$this->load->view('template/footer', $data);
 	}
 }
