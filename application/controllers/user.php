@@ -4,8 +4,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class User extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
-
 		$this->load->library('session');
+
+		
 		$this->load->helper('url');
 		$this->load->library('session');
 		$this->load->model('model_user');
@@ -14,12 +15,16 @@ class User extends CI_Controller {
 	}
 	// page -------------------------------------------------------------------------------------------
 	public function index(){
-		$data['user_id'] = $this->session->userdata('user_id');
-		$data['users'] = $this->model_user->getUsers();
-		$data['roles'] = $this->model_role->getRoles();
-		$this->load->view('template/header', $data);
-		$this->load->view('contents/users', $data);
-		$this->load->view('template/footer', $data);
+		if($this->session->userdata('user_id') != null){
+			$data['user_id'] = $this->session->userdata('user_id');
+			$data['users'] = $this->model_user->getUsers();
+			$data['roles'] = $this->model_role->getRoles();
+			$this->load->view('template/header', $data);
+			$this->load->view('contents/users', $data);
+			$this->load->view('template/footer', $data);
+		}else{
+			show_404();
+		}
 	}
 	//-------------------------------------------------------------------------------------------------
 
