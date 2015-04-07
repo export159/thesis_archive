@@ -20,7 +20,9 @@
 				<td><?php echo htmlentities($user['middle_name']); ?></td>
 				<td><?php echo htmlentities($user['last_name']); ?></td>
 				<td><?php echo htmlentities($user['role']); ?></td>
-				<td>Edit</td>
+				<td>
+					<a href="<?php base_url() ?>user/edit/<?php echo htmlentities($user['id']); ?>">Edit</a>
+				</td>
 				<td>Delete</td>
 			</tr>
 		<?php endforeach; ?>
