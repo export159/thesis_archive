@@ -2,7 +2,7 @@
 <form action="<?php echo base_url(); ?>user/update/<?php echo $user['id']; ?>" method="POST">
 	<label>Username: </label><input type="text" value="<?php echo htmlentities($user['username']); ?>" name="username" />
 	<br />
-	<label>Password: </label><input type="password" value="<?php echo htmlentities($user['password']); ?>" name="password" />
+	<label>Password: </label><input type="password" value="" name="password" />
 	<br />
 	<input type="hidden" value="<?php echo $user['info_id']; ?>" name="user_info_id" />
 	<label>First name: </label><input type="text" value="<?php echo htmlentities($user['first_name']); ?>" name="first_name" />

@@ -5,9 +5,9 @@ class User extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load->library('session');
-
 		
 		$this->load->helper('url');
+		$this->load->helper('security');
 		$this->load->library('session');
 		$this->load->model('model_user');
 		$this->load->model('model_settings');
@@ -57,7 +57,7 @@ class User extends CI_Controller {
 	public function add(){
 		if($this->session->userdata('user_id') != null && $this->input->post() != null){
 			$user['username'] = $this->input->post('username');
-			$user['password'] = $this->input->post('password');
+			$user['password'] = do_hash($this->input->post('password'));
 			$user['role_id'] = $this->input->post('role');
 
 			$user_info['first_name'] = $this->input->post('first_name');
@@ -74,7 +74,7 @@ class User extends CI_Controller {
 	public function update($id){
 		if($this->session->userdata('user_id') != null && $this->input->post() != null){
 			$user['username'] = $this->input->post('username');
-			$user['password'] = $this->input->post('password');
+			$user['password'] = do_hash($this->input->post('password'));
 			$user['user_info_id'] = $this->input->post('user_info_id');
 			$user['role_id'] = $this->input->post('role');
 
