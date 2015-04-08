@@ -8,7 +8,7 @@
 		<th>Middle name</th>
 		<th>Last name</th>
 		<th>Role</th>
-		<th colspan="2">Action</th>
+		<th colspan="3">Action</th>
 	</thead>
 	<tbody>
 		<?php foreach($users as $index => $user): ?>
@@ -21,6 +21,9 @@
 				<td><?php echo htmlentities($user['last_name']); ?></td>
 				<td><?php echo htmlentities($user['role']); ?></td>
 				<td>
+					<a href="<?php base_url() ?>user/<?php echo htmlentities($user['id']); ?>">View</a>
+				</td>
+				<td>
 					<a href="<?php base_url() ?>user/edit/<?php echo htmlentities($user['id']); ?>">Edit</a>
 				</td>
 				<td>Delete</td>
@@ -30,7 +33,9 @@
 </table>
 
 <!-- an pag add han user //ig modal nala ini brad -->
+
 <div>
+	<h2>Add User </h2>
 	<form action="<?php echo base_url(); ?>user/add" method="POST">
 		<label>Username: </label><input type="text" name="username" />
 		<br />

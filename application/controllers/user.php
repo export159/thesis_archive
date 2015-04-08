@@ -26,6 +26,18 @@ class User extends CI_Controller {
 			show_404();
 		}
 	}
+	public function profile($id){
+		if($this->session->userdata('user_id') != null && $id != null){
+			$data['user_id'] = $this->session->userdata('user_id');
+			$data['user'] = $this->model_user->getUser(null, $id);
+
+			$this->load->view('template/header', $data);
+			$this->load->view('contents/profile', $data);
+			$this->load->view('template/footer', $data);
+		}else{
+			show_404();
+		}
+	}
 	public function edit($id){
 		if($this->session->userdata('user_id') != null && $id != null){
 			$data['user_id'] = $this->session->userdata('user_id');
@@ -72,7 +84,7 @@ class User extends CI_Controller {
 
 			$this->model_user->updateUser($user, $user_info, $id);
 
-			header("location: ".base_url()."user");
+			header("location: ".base_url()."user/$id");
 		}
 		else{
 			show_404();

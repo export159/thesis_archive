@@ -1,3 +1,4 @@
+<h2>Edit User</h2>
 <form action="<?php echo base_url(); ?>user/update/<?php echo $user['id']; ?>" method="POST">
 	<label>Username: </label><input type="text" value="<?php echo htmlentities($user['username']); ?>" name="username" />
 	<br />
@@ -17,5 +18,5 @@
 	<?php endforeach; ?>
 	</select>
 	<br />
-	<input type="submit" value="Update user" />
+	<input type="submit" value="Update user" /> <a href="../../user/<?php echo htmlentities($user['id']); ?>">Back to View</a>
 </form>
