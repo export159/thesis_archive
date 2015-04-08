@@ -10,7 +10,7 @@ class User extends CI_Controller {
 		$this->load->helper('url');
 		$this->load->library('session');
 		$this->load->model('model_user');
-		$this->load->model('model_role');
+		$this->load->model('model_settings');
 
 	}
 	// pages -------------------------------------------------------------------------------------------
@@ -18,7 +18,7 @@ class User extends CI_Controller {
 		if($this->session->userdata('user_id') != null){
 			$data['user_id'] = $this->session->userdata('user_id');
 			$data['users'] = $this->model_user->getUsers();
-			$data['roles'] = $this->model_role->getRoles();
+			$data['roles'] = $this->model_settings->getRoles();
 			$this->load->view('template/header', $data);
 			$this->load->view('contents/users', $data);
 			$this->load->view('template/footer', $data);
@@ -42,7 +42,7 @@ class User extends CI_Controller {
 		if($this->session->userdata('user_id') != null && $id != null){
 			$data['user_id'] = $this->session->userdata('user_id');
 			$data['user'] = $this->model_user->getUser(null, $id);
-			$data['roles'] = $this->model_role->getRoles();
+			$data['roles'] = $this->model_settings->getRoles();
 
 			$this->load->view('template/header', $data);
 			$this->load->view('forms/edit_page', $data);
