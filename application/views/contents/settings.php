@@ -1,15 +1,15 @@
-<h2>General Settings</h2>
-<div>
-<h3>Roles</h3>
-<button>Add</button>
-	<table border="1">
+<h3>General Settings</h3>
+<div class="row well" >
+	<h4>Roles</h4>
+	<a href="#" data-toggle="modal">Add a Role</a>
+	<table class="table table-striped">
 		<thead>
 			<th>#</th>
 			<th>Role</th>
 			<th colspan="2">Actions</th>
 		</thead>
 		<tbody>
-		<?php foreach($roles as $index => $role): ?>
+			<?php foreach($roles as $index => $role): ?>
 			<tr>
 				<td><?php echo $index + 1; ?></td>
 				<td><?php echo $role['role']; ?></td>
@@ -20,22 +20,21 @@
 					Delete
 				</td>
 			</tr>
-		<?php endforeach; ?>
+			<?php endforeach; ?>
 		</tbody>
 	</table>
 </div>
-<hr />
-<div>
-<h3>Categories</h3>
-<button>Add</button>
-	<table border="1">
+<div class="row well" >
+	<h4>Cateogries</h4>
+	<a href="#" data-toggle="modal">Add a Category</a>
+	<table class="table table-striped">
 		<thead>
 			<th>#</th>
-			<th>Category</th>
+			<th>Cateogory</th>
 			<th colspan="2">Actions</th>
 		</thead>
 		<tbody>
-		<?php foreach($categories as $index => $category): ?>
+			<?php foreach($categories as $index => $category): ?>
 			<tr>
 				<td><?php echo $index + 1; ?></td>
 				<td><?php echo $category['category']; ?></td>
@@ -46,22 +45,21 @@
 					Delete
 				</td>
 			</tr>
-		<?php endforeach; ?>
+			<?php endforeach; ?>
 		</tbody>
 	</table>
 </div>
-<hr />
-<div>
-<h3>Courses</h3>
-<button>Add</button>
-	<table border="1">
+<div class="row well" >
+	<h4>Courses</h4>
+	<a href="#" data-toggle="modal">Add a Course</a>
+	<table class="table table-striped">
 		<thead>
 			<th>#</th>
 			<th>Course</th>
 			<th colspan="2">Actions</th>
 		</thead>
 		<tbody>
-		<?php foreach($courses as $index => $course): ?>
+			<?php foreach($courses as $index => $course): ?>
 			<tr>
 				<td><?php echo $index + 1; ?></td>
 				<td><?php echo $course['course']; ?></td>
@@ -72,22 +70,21 @@
 					Delete
 				</td>
 			</tr>
-		<?php endforeach; ?>
+			<?php endforeach; ?>
 		</tbody>
 	</table>
 </div>
-<hr />
-<div>
-<h3>Year Levels</h3>
-<button>Add</button>
-	<table border="1">
+<div class="row well" >
+	<h4>Year Levels</h4>
+	<a href="#" data-toggle="modal">Add a Year Level</a>
+	<table class="table table-striped">
 		<thead>
 			<th>#</th>
 			<th>Year Level</th>
 			<th colspan="2">Actions</th>
 		</thead>
 		<tbody>
-		<?php foreach($year_levels as $index => $year_level): ?>
+			<?php foreach($year_levels as $index => $year_level): ?>
 			<tr>
 				<td><?php echo $index + 1; ?></td>
 				<td><?php echo $year_level['year']; ?></td>
@@ -98,7 +95,7 @@
 					Delete
 				</td>
 			</tr>
-		<?php endforeach; ?>
+			<?php endforeach; ?>
 		</tbody>
 	</table>
 </div>
