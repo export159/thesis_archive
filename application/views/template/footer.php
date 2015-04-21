@@ -1,3 +1,5 @@
+	</div>
+<!-- body end -->
 <!-- footer -->
 
 	<div class="text-center">&copy LNU, Archive Thesis 2014</div>
