@@ -1,7 +1,7 @@
 <h3>General Settings</h3>
 <div class="row well" >
 	<h4>Roles</h4>
-	<a href="#" data-toggle="modal">Add a Role</a>
+	<a class="show-setting-form" data-value="roles-add" href="#" data-toggle="modal">Add a Role</a>
 	<table class="table table-striped">
 		<thead>
 			<th>#</th>
@@ -26,7 +26,7 @@
 </div>
 <div class="row well" >
 	<h4>Cateogries</h4>
-	<a href="#" data-toggle="modal">Add a Category</a>
+	<a class="show-setting-form" data-value="categories-add" href="#" data-toggle="modal">Add a Category</a>
 	<table class="table table-striped">
 		<thead>
 			<th>#</th>
@@ -51,7 +51,7 @@
 </div>
 <div class="row well" >
 	<h4>Courses</h4>
-	<a href="#" data-toggle="modal">Add a Course</a>
+	<a class="show-setting-form" data-value="courses-add" href="#" data-toggle="modal">Add a Course</a>
 	<table class="table table-striped">
 		<thead>
 			<th>#</th>
@@ -76,7 +76,7 @@
 </div>
 <div class="row well" >
 	<h4>Year Levels</h4>
-	<a href="#" data-toggle="modal">Add a Year Level</a>
+	<a class="show-setting-form" data-value="levels-add" href="#" data-toggle="modal">Add a Year Level</a>
 	<table class="table table-striped">
 		<thead>
 			<th>#</th>
@@ -99,3 +99,24 @@
 		</tbody>
 	</table>
 </div>
+<!-- modals -->
+<div id="modal-settings-form" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="AddUser" aria-hidden="true">
+	<form class="form form-horizontal" method="POST">
+  	<div class="modal-dialog modal-sm">
+    	<div class="modal-content">
+      		<div class="modal-header">
+       			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+   				<h4 class="modal-title" id="myModalLabel"></h4>
+   			</div>
+   			<div class="modal-body">
+				<?php $this->load->view('forms/settings_form'); ?>     			
+   			</div>
+   			<div class="modal-footer">
+      			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+       			<button type="submit" class="btn btn-primary">Add</button>
+   			</div>
+    	</div>
+  	</div>
+  	</form>
+</div>
+	<!-- modals end -->
