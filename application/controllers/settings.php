@@ -29,7 +29,55 @@ class Settings extends CI_Controller {
 	}
 	//----end----//
 
+
+
 	//---- functions ----//
-	
+	public function addRole(){
+		if($this->session->userdata('user_id') != null && $this->input->post() != null){
+			$data = $this->input->post();
+
+			$this->model_settings->addRole($data); //<--------- returns the id
+
+			header('location: '. base_url() . 'settings');
+		}else{
+			show_404();
+		}
+	}
+
+	public function addCategory(){
+		if($this->session->userdata('user_id') != null && $this->input->post() != null){
+			$data = $this->input->post();
+
+			$this->model_settings->addCategory($data); //<--------- returns the id
+
+			header('location: '. base_url() . 'settings');
+		}else{
+			show_404();
+		}
+	}
+
+	public function addCourse(){
+		if($this->session->userdata('user_id') != null && $this->input->post() != null){
+			$data = $this->input->post();
+
+			$this->model_settings->addCourse($data); //<--------- returns the id
+
+			header('location: '. base_url() . 'settings');
+		}else{
+			show_404();
+		}
+	}
+
+	public function addYear(){
+		if($this->session->userdata('user_id') != null && $this->input->post() != null){
+			$data = $this->input->post();
+
+			$this->model_settings->addYear($data); //<--------- returns the id
+
+			header('location: '. base_url() . 'settings');
+		}else{
+			show_404();
+		}
+	}
 	//---- end ----//
 }
