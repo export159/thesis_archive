@@ -12,6 +12,13 @@ class Model_settings extends CI_Model {
 
 		return $list->result_array();
 	}
+	public function getRole($id){
+		$where['id'] = $id;
+		$this->db->where($where);
+		$list = $this->db->get('tbl_roles');
+
+		return $list->result_array();
+	}
 	public function addRole($data){
 		$this->db->insert('tbl_roles', $data);
 
@@ -22,6 +29,13 @@ class Model_settings extends CI_Model {
 
 	//--- Categories section ---//
 	public function getCategories(){
+		$list = $this->db->get('tbl_category');
+
+		return $list->result_array();
+	}
+	public function getCategory($id){
+		$where['id'] = $id;
+		$this->db->where($where);
 		$list = $this->db->get('tbl_category');
 
 		return $list->result_array();
@@ -40,6 +54,13 @@ class Model_settings extends CI_Model {
 
 		return $list->result_array();
 	}
+	public function getCourse($id){
+		$where['id'] = $id;
+		$this->db->where($where);
+		$list = $this->db->get('tbl_course');
+
+		return $list->result_array();
+	}
 	public function addCourse($data){
 		$this->db->insert('tbl_course', $data);
 
@@ -50,6 +71,13 @@ class Model_settings extends CI_Model {
 
 	//--- Years section ---//
 	public function getYears(){
+		$list = $this->db->get('tbl_year');
+
+		return $list->result_array();
+	}
+	public function getYear($id){
+		$where['id'] = $id;
+		$this->db->where($where);
 		$list = $this->db->get('tbl_year');
 
 		return $list->result_array();

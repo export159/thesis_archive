@@ -14,7 +14,7 @@
 				<td><?php echo $index + 1; ?></td>
 				<td><?php echo $role['role']; ?></td>
 				<td>
-					Edit
+					<a class="show-setting-form" data-value="roles-edit" data-id="<?php echo $role['id']; ?>" href="#" data-toggle="modal">Edit</a>
 				</td>
 				<td>
 					Delete
@@ -39,7 +39,7 @@
 				<td><?php echo $index + 1; ?></td>
 				<td><?php echo $category['category']; ?></td>
 				<td>
-					Edit
+					<a class="show-setting-form" data-value="categories-edit" data-id="<?php echo $category['id']; ?>" href="#" data-toggle="modal">Edit</a>
 				</td>
 				<td>
 					Delete
@@ -64,7 +64,7 @@
 				<td><?php echo $index + 1; ?></td>
 				<td><?php echo $course['course']; ?></td>
 				<td>
-					Edit
+					<a class="show-setting-form" data-value="courses-edit" data-id="<?php echo $course['id']; ?>" href="#" data-toggle="modal">Edit</a>
 				</td>
 				<td>
 					Delete
@@ -89,7 +89,7 @@
 				<td><?php echo $index + 1; ?></td>
 				<td><?php echo $year_level['year']; ?></td>
 				<td>
-					Edit
+					<a class="show-setting-form" data-value="levels-edit" data-id="<?php echo $year_level['id']; ?>" href="#" data-toggle="modal">Edit</a>
 				</td>
 				<td>
 					Delete

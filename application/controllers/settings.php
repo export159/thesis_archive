@@ -43,7 +43,6 @@ class Settings extends CI_Controller {
 			show_404();
 		}
 	}
-
 	public function addCategory(){
 		if($this->session->userdata('user_id') != null && $this->input->post() != null){
 			$data = $this->input->post();
@@ -55,7 +54,6 @@ class Settings extends CI_Controller {
 			show_404();
 		}
 	}
-
 	public function addCourse(){
 		if($this->session->userdata('user_id') != null && $this->input->post() != null){
 			$data = $this->input->post();
@@ -67,7 +65,6 @@ class Settings extends CI_Controller {
 			show_404();
 		}
 	}
-
 	public function addYear(){
 		if($this->session->userdata('user_id') != null && $this->input->post() != null){
 			$data = $this->input->post();
@@ -78,6 +75,52 @@ class Settings extends CI_Controller {
 		}else{
 			show_404();
 		}
+	}
+
+
+	public function editRole($id){
+		if($this->session->userdata('user_id') != null && $id != null){
+
+			echo json_encode($this->model_settings->getRole($id));
+
+			
+		}else{
+			show_404();
+		}
+
+	}
+	public function editCategory($id){
+		if($this->session->userdata('user_id') != null && $id != null){
+
+			echo json_encode($this->model_settings->getCategory($id));
+
+			
+		}else{
+			show_404();
+		}
+
+	}
+	public function editCourse($id){
+		if($this->session->userdata('user_id') != null && $id != null){
+
+			echo json_encode($this->model_settings->getCourse($id));
+
+			
+		}else{
+			show_404();
+		}
+
+	}
+	public function editYear($id){
+		if($this->session->userdata('user_id') != null && $id != null){
+
+			echo json_encode($this->model_settings->getYear($id));
+
+			
+		}else{
+			show_404();
+		}
+
 	}
 	//---- end ----//
 }
