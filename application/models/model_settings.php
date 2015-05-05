@@ -24,6 +24,11 @@ class Model_settings extends CI_Model {
 
 		return $this->db->insert_id();
 	}
+	public function updateRole($data, $id){
+		$where['id'] = $id;
+		$this->db->where($where);
+		$this->db->update('tbl_roles', $data);
+	}
 	//--- end ---/
 
 
@@ -45,11 +50,17 @@ class Model_settings extends CI_Model {
 
 		return $this->db->insert_id();
 	}
+	public function updateCategory($data, $id){
+		$where['id'] = $id;
+		$this->db->where($where);
+		$this->db->update('tbl_category', $data);
+	}
 	//--- end ---/
 
 
 	//--- Courses section ---//
 	public function getCourses(){
+		$this->db->order_by('course', 'asc');
 		$list = $this->db->get('tbl_course');
 
 		return $list->result_array();
@@ -66,11 +77,17 @@ class Model_settings extends CI_Model {
 
 		return $this->db->insert_id();
 	}
+	public function updateCourse($data, $id){
+		$where['id'] = $id;
+		$this->db->where($where);
+		$this->db->update('tbl_course', $data);
+	}
 	//--- end ---/
 
 
 	//--- Years section ---//
 	public function getYears(){
+		$this->db->order_by('year', 'asc');
 		$list = $this->db->get('tbl_year');
 
 		return $list->result_array();
@@ -86,6 +103,11 @@ class Model_settings extends CI_Model {
 		$this->db->insert('tbl_year', $data);
 
 		return $this->db->insert_id();
+	}
+	public function updateYear($data, $id){
+		$where['id'] = $id;
+		$this->db->where($where);
+		$this->db->update('tbl_year', $data);
 	}
 	//--- end ---/
 }

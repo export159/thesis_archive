@@ -122,5 +122,51 @@ class Settings extends CI_Controller {
 		}
 
 	}
+
+
+	public function updateRole($id){
+		if($this->session->userdata('user_id') != null && $id != null){
+			$data = $this->input->post();
+
+			$this->model_settings->updateRole($data, $id);
+			
+			header('location: '. base_url() . 'settings');
+		}else{
+			show_404();
+		}
+	}
+	public function updateCategory($id){
+		if($this->session->userdata('user_id') != null && $id != null){
+			$data = $this->input->post();
+
+			$this->model_settings->updateCategory($data, $id);
+			
+			header('location: '. base_url() . 'settings');
+		}else{
+			show_404();
+		}
+	}
+	public function updateCourse($id){
+		if($this->session->userdata('user_id') != null && $id != null){
+			$data = $this->input->post();
+
+			$this->model_settings->updateCourse($data, $id);
+			
+			header('location: '. base_url() . 'settings');
+		}else{
+			show_404();
+		}
+	}
+	public function updateYear($id){
+		if($this->session->userdata('user_id') != null && $id != null){
+			$data = $this->input->post();
+
+			$this->model_settings->updateYear($data, $id);
+			
+			header('location: '. base_url() . 'settings');
+		}else{
+			show_404();
+		}
+	}
 	//---- end ----//
 }
