@@ -20,9 +20,13 @@ class Model_User extends CI_Model{
 		$this->db->where('id', $id);
 		$this->db->update('tbl_users', $user);
 	}
+	function deleteUser($id){
+		$where['id'] = $id;
+		$this->db->delete('tbl_user_info',$where);
+	}
 
 	function getUsers(){
-		$list = $this->db->query('SELECT  user.id, user.username, user.password, info.first_name, info.middle_name, info.last_name, roles.role FROM tbl_users as user, tbl_user_info as info, tbl_roles as roles WHERE user.user_info_id = info.id AND user.role_id = roles.id');
+		$list = $this->db->query('SELECT  user.id, user.username, user.password,info.id as info_id, info.first_name, info.middle_name, info.last_name, roles.role FROM tbl_users as user, tbl_user_info as info, tbl_roles as roles WHERE user.user_info_id = info.id AND user.role_id = roles.id');
 
 		return $list->result_array();
 	}

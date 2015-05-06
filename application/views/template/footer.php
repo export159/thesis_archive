@@ -2,7 +2,7 @@
 <!-- body end -->
 <!-- footer -->
 
-	<div class="text-center">&copy LNU, Archive Thesis 2014</div>
+	<div class="text-center">&copy LNU, Archive Thesis 2015</div>
 
 	<!-- footer end -->
 		
@@ -17,9 +17,9 @@
 
 <script type="text/javascript">
 $(document).ready(function(e){
+
 	user();
 	settings();
-	
 	
 });
 </script>

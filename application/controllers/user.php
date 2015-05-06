@@ -51,6 +51,14 @@ class User extends CI_Controller {
 			show_404();
 		}
 	}
+	public function usersList(){
+		if($this->session->userdata('user_id') != null){
+			$data['users'] = $this->model_user->getUsers();
+			$this->load->view('/forms/user_list_page', $data);
+		}else{
+			show_404();
+		}
+	}
 	//-------------------------------------------------------------------------------------------------
 
 	//functionality
@@ -85,6 +93,15 @@ class User extends CI_Controller {
 			$this->model_user->updateUser($user, $user_info, $id);
 
 			header("location: ".base_url()."user/$id");
+		}
+		else{
+			show_404();
+		}
+	}
+	public function delete($id){
+		if($this->session->userdata('user_id') != null && $this->input->get() != null){
+			$this->model_user->deleteUser($id);
+			$this->usersList();
 		}
 		else{
 			show_404();
