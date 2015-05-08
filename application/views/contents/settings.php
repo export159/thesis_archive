@@ -2,102 +2,54 @@
 <div class="row well" >
 	<h4>Roles</h4>
 	<a class="show-setting-form" data-value="roles-add" href="#" data-toggle="modal">Add a Role</a>
-	<table class="table table-striped">
-		<thead>
-			<th>#</th>
-			<th>Role</th>
-			<th colspan="2">Actions</th>
-		</thead>
-		<tbody>
-			<?php foreach($roles as $index => $role): ?>
-			<tr>
-				<td><?php echo $index + 1; ?></td>
-				<td><?php echo $role['role']; ?></td>
-				<td>
-					<a class="show-setting-form" data-value="roles-edit" data-id="<?php echo $role['id']; ?>" href="#" data-toggle="modal">Edit</a>
-				</td>
-				<td>
-					Delete
-				</td>
-			</tr>
-			<?php endforeach; ?>
-		</tbody>
-	</table>
+	<div class="roles-list">
+		<?php
+			$data['header'] = 'Role';
+			$data['type'] = 'role';
+			$data['values'] = $roles;
+
+			$this->load->view('forms/settings_list_page', $data);
+		 ?>
+	</div>
 </div>
 <div class="row well" >
 	<h4>Cateogries</h4>
-	<a class="show-setting-form" data-value="categories-add" href="#" data-toggle="modal">Add a Category</a>
-	<table class="table table-striped">
-		<thead>
-			<th>#</th>
-			<th>Cateogory</th>
-			<th colspan="2">Actions</th>
-		</thead>
-		<tbody>
-			<?php foreach($categories as $index => $category): ?>
-			<tr>
-				<td><?php echo $index + 1; ?></td>
-				<td><?php echo $category['category']; ?></td>
-				<td>
-					<a class="show-setting-form" data-value="categories-edit" data-id="<?php echo $category['id']; ?>" href="#" data-toggle="modal">Edit</a>
-				</td>
-				<td>
-					Delete
-				</td>
-			</tr>
-			<?php endforeach; ?>
-		</tbody>
-	</table>
+	<a class="show-setting-form" data-value="categories-add" href="#" data-toggle="modal">Add a Category</a>\
+	<div class="categories-list">
+		<?php
+			$data['header'] = 'Category';
+			$data['type'] = 'category';
+			$data['values'] = $categories;
+
+			$this->load->view('forms/settings_list_page', $data);
+	 	?>
+	</div>
 </div>
 <div class="row well" >
 	<h4>Courses</h4>
 	<a class="show-setting-form" data-value="courses-add" href="#" data-toggle="modal">Add a Course</a>
-	<table class="table table-striped">
-		<thead>
-			<th>#</th>
-			<th>Course</th>
-			<th colspan="2">Actions</th>
-		</thead>
-		<tbody>
-			<?php foreach($courses as $index => $course): ?>
-			<tr>
-				<td><?php echo $index + 1; ?></td>
-				<td><?php echo $course['course']; ?></td>
-				<td>
-					<a class="show-setting-form" data-value="courses-edit" data-id="<?php echo $course['id']; ?>" href="#" data-toggle="modal">Edit</a>
-				</td>
-				<td>
-					Delete
-				</td>
-			</tr>
-			<?php endforeach; ?>
-		</tbody>
-	</table>
+	<div class="courses-list">
+		<?php
+			$data['header'] = 'Course';
+			$data['type'] = 'course';
+			$data['values'] = $courses;
+
+			$this->load->view('forms/settings_list_page', $data);
+	 	?>
+	</div>
 </div>
 <div class="row well" >
 	<h4>Year Levels</h4>
-	<a class="show-setting-form" data-value="levels-add" href="#" data-toggle="modal">Add a Year Level</a>
-	<table class="table table-striped">
-		<thead>
-			<th>#</th>
-			<th>Year Level</th>
-			<th colspan="2">Actions</th>
-		</thead>
-		<tbody>
-			<?php foreach($year_levels as $index => $year_level): ?>
-			<tr>
-				<td><?php echo $index + 1; ?></td>
-				<td><?php echo $year_level['year']; ?></td>
-				<td>
-					<a class="show-setting-form" data-value="levels-edit" data-id="<?php echo $year_level['id']; ?>" href="#" data-toggle="modal">Edit</a>
-				</td>
-				<td>
-					Delete
-				</td>
-			</tr>
-			<?php endforeach; ?>
-		</tbody>
-	</table>
+	<a class="show-setting-form" data-value="years-add" href="#" data-toggle="modal">Add a Year Level</a>
+	<div class="years-list">
+		<?php
+			$data['header'] = 'Year Level';
+			$data['type'] = 'year';
+			$data['values'] = $year_levels;
+
+			$this->load->view('forms/settings_list_page', $data);
+	 	?>
+	</div>
 </div>
 <!-- modals -->
 <div id="modal-settings-form" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="AddUser" aria-hidden="true">

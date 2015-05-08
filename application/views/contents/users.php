@@ -61,31 +61,3 @@
   	</form>
 </div>
 		<!-- modal end -->
-<!--
-
-
-
-<div>
-	<h2>Add User </h2>
-	<form action="<?php echo base_url(); ?>user/add" method="POST">
-		<label>Username: </label><input type="text" name="username" />
-		<br />
-		<label>Password: </label><input type="password" name="password" />
-		<br />
-		<label>First name: </label><input type="text" name="first_name" />
-		<br />
-		<label>Middle name: </label><input type="text" name="middle_name" />
-		<br />
-		<label>Last name: </label><input type="text" name="last_name" />
-		<br />
-		<select name="role">
-			<option value="">- Select Role -</option>
-		<?php foreach($roles as $role): ?>
-			<option value="<?php echo htmlentities($role['id']); ?>"><?php echo htmlentities($role['role']); ?></option>
-		<?php endforeach; ?>
-		</select>
-		<br />
-		<input type="submit" value="Add user" />
-	</form>
-</div>
--->

@@ -1,9 +1,10 @@
 function settings(){
-	// modal for showing the "add" interface//
+	
 	$('.show-setting-form').click(function(e){
 		value = $(this).data('value');
 		id 	  = $(this).data('id');
 
+		// modal for showing the "add" interface//
 		if(value == 'roles-add'){
 			$('#modal-settings-form form').attr('action', '/archive_thesis/settings/addRole')
 			$('.modal-title').html('Add Roles');
@@ -25,7 +26,7 @@ function settings(){
 			$('.modal-body input').attr('value', '');
 			$('.modal-body input').attr('name', 'course');
 			$('#modal-settings-form').modal('show');
-		}else if(value == 'levels-add'){
+		}else if(value == 'years-add'){
 			$('#modal-settings-form form').attr('action', '/archive_thesis/settings/addYear')
 			$('.modal-title').html('Add Year Level');
 			$('.modal-body input').attr('placeholder', 'Year Level (Eg. IV)');
@@ -96,7 +97,7 @@ function settings(){
 				}
 			});
 		}
-		else if(value == 'levels-edit'){
+		else if(value == 'years-edit'){
 			$('#modal-settings-form form').attr('action', '/archive_thesis/settings/updateYear/'+id)
 			$('.modal-title').html('Edit Year Level');
 			$('.modal-body input').attr('placeholder', 'Year Level (Eg. IV)');
@@ -121,5 +122,50 @@ function settings(){
 
 		
 	});
+	
+	// deleting setting values
+	$('.settings-delete').click(function(){
+		id    = $(this).data('id');
+		value = $(this).data('value');
+		
+		if(confirm("Do you want to delete this entry?")){
+			if(value == 'roles-delete'){
+				$.ajax({
+					url: '/archive_thesis/settings/deleteRole/'+id,
+					type: 'GET',
+					success: function(e){
+						$('.roles-list').html(e);
+					}
+				});
+			}else if(value == 'categories-delete'){
+				$.ajax({
+					url: '/archive_thesis/settings/deleteCategory/'+id,
+					type: 'GET',
+					success: function(e){
+						$('.categories-list').html(e);
+					}
+				});
+			}else if(value == 'courses-delete'){
+				$.ajax({
+					url: '/archive_thesis/settings/deleteCourse/'+id,
+					type: 'GET',
+					success: function(e){
+						$('.courses-list').html(e);
+					}
+				});
+			}else if(value == 'years-delete'){
+				$.ajax({
+					url: '/archive_thesis/settings/deleteYear/'+id,
+					type: 'GET',
+					success: function(e){
+						$('.years-list').html(e);
+					}
+				});
+			}
+		}
+
+		return false;
+	});
+	//end
 	
 }

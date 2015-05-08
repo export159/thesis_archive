@@ -29,6 +29,10 @@ class Model_settings extends CI_Model {
 		$this->db->where($where);
 		$this->db->update('tbl_roles', $data);
 	}
+	public function deleteRole($id){
+		$where['id'] = $id;
+		$this->db->delete('tbl_roles', $where);
+	}
 	//--- end ---/
 
 
@@ -54,6 +58,10 @@ class Model_settings extends CI_Model {
 		$where['id'] = $id;
 		$this->db->where($where);
 		$this->db->update('tbl_category', $data);
+	}
+	public function deleteCategory($id){
+		$where['id'] = $id;
+		$this->db->delete('tbl_category', $where);
 	}
 	//--- end ---/
 
@@ -82,6 +90,10 @@ class Model_settings extends CI_Model {
 		$this->db->where($where);
 		$this->db->update('tbl_course', $data);
 	}
+	public function deleteCourse($id){
+		$where['id'] = $id;
+		$this->db->delete('tbl_course', $where);
+	}
 	//--- end ---/
 
 
@@ -108,6 +120,10 @@ class Model_settings extends CI_Model {
 		$where['id'] = $id;
 		$this->db->where($where);
 		$this->db->update('tbl_year', $data);
+	}
+	public function deleteYear($id){
+		$where['id'] = $id;
+		$this->db->delete('tbl_year', $where);
 	}
 	//--- end ---/
 }
