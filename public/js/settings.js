@@ -7,31 +7,35 @@ function settings(){
 		// modal for showing the "add" interface//
 		if(value == 'roles-add'){
 			$('#modal-settings-form form').attr('action', '/archive_thesis/settings/addRole')
+			$('#modal-settings-form form').attr('data-value', 'roles-list');
 			$('.modal-title').html('Add Roles');
 			$('.modal-body input').attr('placeholder', 'Role');
-			$('.modal-body input').attr('name', 'role');
 			$('.modal-body input').attr('value', '');
+			$('.modal-body input').attr('name', 'role');
 			$('#modal-settings-form').modal('show');
 		}else if(value == 'categories-add'){
 			$('#modal-settings-form form').attr('action', '/archive_thesis/settings/addCategory')
+			$('#modal-settings-form form').attr('data-value', 'categories-list');
 			$('.modal-title').html('Add Category');
 			$('.modal-body input').attr('placeholder', 'Category');
-			$('.modal-body input').attr('value', '');
 			$('.modal-body input').attr('name', 'category');
+			$('.modal-body input').attr('value', '');
 			$('#modal-settings-form').modal('show');
 		}else if(value == 'courses-add'){
 			$('#modal-settings-form form').attr('action', '/archive_thesis/settings/addCourse')
+			$('#modal-settings-form form').attr('data-value', 'courses-list');
 			$('.modal-title').html('Add Course');
 			$('.modal-body input').attr('placeholder', 'Course');
-			$('.modal-body input').attr('value', '');
 			$('.modal-body input').attr('name', 'course');
+			$('.modal-body input').attr('value', '');
 			$('#modal-settings-form').modal('show');
 		}else if(value == 'years-add'){
 			$('#modal-settings-form form').attr('action', '/archive_thesis/settings/addYear')
+			$('#modal-settings-form form').attr('data-value', 'years-list');
 			$('.modal-title').html('Add Year Level');
 			$('.modal-body input').attr('placeholder', 'Year Level (Eg. IV)');
-			$('.modal-body input').attr('value', '');
 			$('.modal-body input').attr('name', 'year');
+			$('.modal-body input').attr('value', '');
 			$('#modal-settings-form').modal('show');
 		}
 
@@ -39,7 +43,8 @@ function settings(){
 
 		// modal for showing the "edit" interface //
 		else if(value == 'roles-edit'){
-			$('#modal-settings-form form').attr('action', '/archive_thesis/settings/updateRole/'+id)
+			$('#modal-settings-form form').attr('action', '/archive_thesis/settings/updateRole/'+id);
+			$('#modal-settings-form form').attr('data-value', 'roles-list');
 			$('.modal-title').html('Edit Role');
 			$('.modal-body input').attr('placeholder', 'Role');
 			// <-----start loading here --> //
@@ -54,12 +59,12 @@ function settings(){
 					//$('.modal-body .form-group div').prepend('<input type="hidden" name ="role_id" value="'+role_id+'" />');
 					// <-----stop loading here --> //
 					$('#modal-settings-form').modal('show');
-					console.log(role_id);
 				}
 			});
 		}
 		else if(value == 'categories-edit'){
 			$('#modal-settings-form form').attr('action', '/archive_thesis/settings/updateCategory/'+id)
+			$('#modal-settings-form form').attr('data-value', 'categories-list');
 			$('.modal-title').html('Edit Category');
 			$('.modal-body input').attr('placeholder', 'Category');
 			// <-----start loading here --> //
@@ -79,6 +84,7 @@ function settings(){
 		}
 		else if(value == 'courses-edit'){
 			$('#modal-settings-form form').attr('action', '/archive_thesis/settings/updateCourse/'+id)
+			$('#modal-settings-form form').attr('data-value', 'courses-list');
 			$('.modal-title').html('Edit Course');
 			$('.modal-body input').attr('placeholder', 'Course');
 			// <-----start loading here --> //
@@ -93,12 +99,12 @@ function settings(){
 					//$('.modal-body .form-group div').prepend('<input type="hidden" name ="role_id" value="'+role_id+'" />');
 					// <-----stop loading here --> //
 					$('#modal-settings-form').modal('show');
-					//console.log(role_id);
 				}
 			});
 		}
 		else if(value == 'years-edit'){
 			$('#modal-settings-form form').attr('action', '/archive_thesis/settings/updateYear/'+id)
+			$('#modal-settings-form form').attr('data-value', 'years-list');
 			$('.modal-title').html('Edit Year Level');
 			$('.modal-body input').attr('placeholder', 'Year Level (Eg. IV)');
 			// <-----start loading here --> //
@@ -113,7 +119,6 @@ function settings(){
 					//$('.modal-body .form-group div').prepend('<input type="hidden" name ="role_id" value="'+role_id+'" />');
 					// <-----stop loading here --> //
 					$('#modal-settings-form').modal('show');
-					//console.log(role_id);
 				}
 			});
 		}
@@ -167,5 +172,33 @@ function settings(){
 		return false;
 	});
 	//end
+
+	// -- before submitting form on this page -- //
+	$('.settings-form').submit(function(){
+		type = $(this).data('value');
+		action = $(this).attr('action');
+		value = $(this).find('input').val();
+
+		
+		$.ajax({
+			url: action,
+			data: {'data' : value},
+			type: 'POST',
+			success: function(e){
+				if(type == 'roles-list')
+					$('.'+type).html(e);
+				else if(type == 'categories-list')
+					$('.'+type).html(e);
+				else if(type == 'courses-list')
+					$('.'+type).html(e);
+				else if(type == 'years-list')
+					$('.'+type).html(e);
+
+				$(this).find('input').val('wahahah');
+				$('#modal-settings-form').modal('hide');
+			}
+		});
+		return false;
+	});
 	
 }

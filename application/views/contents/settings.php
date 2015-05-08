@@ -53,7 +53,7 @@
 </div>
 <!-- modals -->
 <div id="modal-settings-form" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="AddUser" aria-hidden="true">
-	<form class="form form-horizontal" method="POST">
+	<form class="form form-horizontal settings-form" method="POST">
   	<div class="modal-dialog modal-sm">
     	<div class="modal-content">
       		<div class="modal-header">

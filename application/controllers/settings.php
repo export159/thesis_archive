@@ -63,44 +63,48 @@ class Settings extends CI_Controller {
 	//---- functions ----//
 	public function addRole(){
 		if($this->session->userdata('user_id') != null && $this->input->post() != null){
-			$data = $this->input->post();
+			$data['role'] = $this->input->post('data');
 
 			$this->model_settings->addRole($data); //<--------- returns the id
 
-			header('location: '. base_url() . 'settings');
+			$this->listSettings('role');
+			//header('location: '. base_url() . 'settings');
 		}else{
 			show_404();
 		}
 	}
 	public function addCategory(){
 		if($this->session->userdata('user_id') != null && $this->input->post() != null){
-			$data = $this->input->post();
+			$data['category'] = $this->input->post('data');
 
 			$this->model_settings->addCategory($data); //<--------- returns the id
 
-			header('location: '. base_url() . 'settings');
+			$this->listSettings('category');
+			//header('location: '. base_url() . 'settings');
 		}else{
 			show_404();
 		}
 	}
 	public function addCourse(){
 		if($this->session->userdata('user_id') != null && $this->input->post() != null){
-			$data = $this->input->post();
+			$data['course'] = $this->input->post('data');
 
 			$this->model_settings->addCourse($data); //<--------- returns the id
 
-			header('location: '. base_url() . 'settings');
+			$this->listSettings('course');
+			//header('location: '. base_url() . 'settings');
 		}else{
 			show_404();
 		}
 	}
 	public function addYear(){
 		if($this->session->userdata('user_id') != null && $this->input->post() != null){
-			$data = $this->input->post();
+			$data['year'] = $this->input->post('data');
 
 			$this->model_settings->addYear($data); //<--------- returns the id
 
-			header('location: '. base_url() . 'settings');
+			$this->listSettings('year');
+			//header('location: '. base_url() . 'settings');
 		}else{
 			show_404();
 		}
@@ -155,7 +159,7 @@ class Settings extends CI_Controller {
 
 	public function updateRole($id){
 		if($this->session->userdata('user_id') != null && $id != null){
-			$data = $this->input->post();
+			$data['role'] = $this->input->post('data');
 
 			$this->model_settings->updateRole($data, $id);
 			
@@ -167,7 +171,7 @@ class Settings extends CI_Controller {
 	}
 	public function updateCategory($id){
 		if($this->session->userdata('user_id') != null && $id != null){
-			$data = $this->input->post();
+			$data['category'] = $this->input->post('data');
 
 			$this->model_settings->updateCategory($data, $id);
 			
@@ -179,7 +183,7 @@ class Settings extends CI_Controller {
 	}
 	public function updateCourse($id){
 		if($this->session->userdata('user_id') != null && $id != null){
-			$data = $this->input->post();
+			$data['course'] = $this->input->post('data');
 
 			$this->model_settings->updateCourse($data, $id);
 			
@@ -191,7 +195,7 @@ class Settings extends CI_Controller {
 	}
 	public function updateYear($id){
 		if($this->session->userdata('user_id') != null && $id != null){
-			$data = $this->input->post();
+			$data['year'] = $this->input->post('data');
 
 			$this->model_settings->updateYear($data, $id);
 			
