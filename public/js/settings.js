@@ -1,52 +1,52 @@
 function settings(){
 	
-	$('.show-setting-form').click(function(e){
+	$('body').on('click', '.show-setting-form', function(e){
 		value = $(this).data('value');
 		id 	  = $(this).data('id');
 
 		// modal for showing the "add" interface//
 		if(value == 'roles-add'){
-			$('#modal-settings-form form').attr('action', '/archive_thesis/settings/addRole')
-			$('#modal-settings-form form').attr('data-value', 'roles-list');
-			$('.modal-title').html('Add Roles');
-			$('.modal-body input').attr('placeholder', 'Role');
-			$('.modal-body input').attr('value', '');
-			$('.modal-body input').attr('name', 'role');
-			$('#modal-settings-form').modal('show');
+			$('body').find('#modal-settings-form form').attr('action', '/archive_thesis/settings/addRole')
+			$('body').find('#modal-settings-form form').attr('data-value', 'roles-list');
+			$('body').find('.modal-title').html('Add Roles');
+			$('body').find('.modal-body input').attr('placeholder', 'Role');
+			$('body').find('.modal-body input').removeAttr('value');
+			$('body').find('.modal-body input').attr('name', 'role');
+			$('body').find('#modal-settings-form').modal('show');
 		}else if(value == 'categories-add'){
-			$('#modal-settings-form form').attr('action', '/archive_thesis/settings/addCategory')
-			$('#modal-settings-form form').attr('data-value', 'categories-list');
-			$('.modal-title').html('Add Category');
-			$('.modal-body input').attr('placeholder', 'Category');
-			$('.modal-body input').attr('name', 'category');
-			$('.modal-body input').attr('value', '');
-			$('#modal-settings-form').modal('show');
+			$('body').find('#modal-settings-form form').attr('action', '/archive_thesis/settings/addCategory')
+			$('body').find('#modal-settings-form form').attr('data-value', 'categories-list');
+			$('body').find('.modal-title').html('Add Category');
+			$('body').find('.modal-body input').attr('placeholder', 'Category');
+			$('body').find('.modal-body input').attr('name', 'category');
+			$('body').find('.modal-body input').attr('value', '');
+			$('body').find('#modal-settings-form').modal('show');
 		}else if(value == 'courses-add'){
-			$('#modal-settings-form form').attr('action', '/archive_thesis/settings/addCourse')
-			$('#modal-settings-form form').attr('data-value', 'courses-list');
-			$('.modal-title').html('Add Course');
-			$('.modal-body input').attr('placeholder', 'Course');
-			$('.modal-body input').attr('name', 'course');
-			$('.modal-body input').attr('value', '');
-			$('#modal-settings-form').modal('show');
+			$('body').find('#modal-settings-form form').attr('action', '/archive_thesis/settings/addCourse')
+			$('body').find('#modal-settings-form form').attr('data-value', 'courses-list');
+			$('body').find('.modal-title').html('Add Course');
+			$('body').find('.modal-body input').attr('placeholder', 'Course');
+			$('body').find('.modal-body input').attr('name', 'course');
+			$('body').find('.modal-body input').attr('value', '');
+			$('body').find('#modal-settings-form').modal('show');
 		}else if(value == 'years-add'){
-			$('#modal-settings-form form').attr('action', '/archive_thesis/settings/addYear')
-			$('#modal-settings-form form').attr('data-value', 'years-list');
-			$('.modal-title').html('Add Year Level');
-			$('.modal-body input').attr('placeholder', 'Year Level (Eg. IV)');
-			$('.modal-body input').attr('name', 'year');
-			$('.modal-body input').attr('value', '');
-			$('#modal-settings-form').modal('show');
+			$('body').find('#modal-settings-form form').attr('action', '/archive_thesis/settings/addYear')
+			$('body').find('#modal-settings-form form').attr('data-value', 'years-list');
+			$('body').find('.modal-title').html('Add Year Level');
+			$('body').find('.modal-body input').attr('placeholder', 'Year Level (Eg. IV)');
+			$('body').find('.modal-body input').attr('name', 'year');
+			$('body').find('.modal-body input').attr('value', '');
+			$('body').find('#modal-settings-form').modal('show');
 		}
 
 		// end //
 
 		// modal for showing the "edit" interface //
 		else if(value == 'roles-edit'){
-			$('#modal-settings-form form').attr('action', '/archive_thesis/settings/updateRole/'+id);
-			$('#modal-settings-form form').attr('data-value', 'roles-list');
-			$('.modal-title').html('Edit Role');
-			$('.modal-body input').attr('placeholder', 'Role');
+			$('body').find('#modal-settings-form form').attr('action', '/archive_thesis/settings/updateRole/'+id);
+			$('body').find('#modal-settings-form form').attr('data-value', 'roles-list');
+			$('body').find('.modal-title').html('Edit Role');
+			$('body').find('.modal-body input').attr('placeholder', 'Role');
 			// <-----start loading here --> //
 			$.ajax({
 				url: '/archive_thesis/settings/editRole/'+ id,
@@ -54,19 +54,19 @@ function settings(){
 				dataType: 'json',
 				success: function(e){
 					//role_id = e[0].id;
-					$('.modal-body input').attr('name', 'role');
-					$('.modal-body input').attr('value', e[0]['role']);
+					$('body').find('.modal-body input').attr('name', 'role');
+					$('body').find('.modal-body input').attr('value', e[0]['role']);
 					//$('.modal-body .form-group div').prepend('<input type="hidden" name ="role_id" value="'+role_id+'" />');
 					// <-----stop loading here --> //
-					$('#modal-settings-form').modal('show');
+					$('body').find('#modal-settings-form').modal('show');
 				}
 			});
 		}
 		else if(value == 'categories-edit'){
-			$('#modal-settings-form form').attr('action', '/archive_thesis/settings/updateCategory/'+id)
-			$('#modal-settings-form form').attr('data-value', 'categories-list');
-			$('.modal-title').html('Edit Category');
-			$('.modal-body input').attr('placeholder', 'Category');
+			$('body').find('#modal-settings-form form').attr('action', '/archive_thesis/settings/updateCategory/'+id)
+			$('body').find('#modal-settings-form form').attr('data-value', 'categories-list');
+			$('body').find('.modal-title').html('Edit Category');
+			$('body').find('.modal-body input').attr('placeholder', 'Category');
 			// <-----start loading here --> //
 			$.ajax({
 				url: '/archive_thesis/settings/editCategory/'+ id,
@@ -74,19 +74,19 @@ function settings(){
 				dataType: 'json',
 				success: function(e){
 					//role_id = e[0].id;
-					$('.modal-body input').attr('name', 'category');
-					$('.modal-body input').attr('value', e[0]['category']);
+					$('body').find('.modal-body input').attr('name', 'category');
+					$('body').find('.modal-body input').attr('value', e[0]['category']);
 					//$('.modal-body .form-group div').prepend('<input type="hidden" name ="role_id" value="'+role_id+'" />');
 					// <-----stop loading here --> //
-					$('#modal-settings-form').modal('show');
+					$('body').find('#modal-settings-form').modal('show');
 				}
 			});
 		}
 		else if(value == 'courses-edit'){
-			$('#modal-settings-form form').attr('action', '/archive_thesis/settings/updateCourse/'+id)
-			$('#modal-settings-form form').attr('data-value', 'courses-list');
-			$('.modal-title').html('Edit Course');
-			$('.modal-body input').attr('placeholder', 'Course');
+			$('body').find('#modal-settings-form form').attr('action', '/archive_thesis/settings/updateCourse/'+id)
+			$('body').find('#modal-settings-form form').attr('data-value', 'courses-list');
+			$('body').find('.modal-title').html('Edit Course');
+			$('body').find('.modal-body input').attr('placeholder', 'Course');
 			// <-----start loading here --> //
 			$.ajax({
 				url: '/archive_thesis/settings/editCourse/'+ id,
@@ -94,19 +94,19 @@ function settings(){
 				dataType: 'json',
 				success: function(e){
 					//role_id = e[0].id;
-					$('.modal-body input').attr('name', 'course');
-					$('.modal-body input').attr('value', e[0]['course']);
+					$('body').find('.modal-body input').attr('name', 'course');
+					$('body').find('.modal-body input').attr('value', e[0]['course']);
 					//$('.modal-body .form-group div').prepend('<input type="hidden" name ="role_id" value="'+role_id+'" />');
 					// <-----stop loading here --> //
-					$('#modal-settings-form').modal('show');
+					$('body').find('#modal-settings-form').modal('show');
 				}
 			});
 		}
 		else if(value == 'years-edit'){
-			$('#modal-settings-form form').attr('action', '/archive_thesis/settings/updateYear/'+id)
-			$('#modal-settings-form form').attr('data-value', 'years-list');
-			$('.modal-title').html('Edit Year Level');
-			$('.modal-body input').attr('placeholder', 'Year Level (Eg. IV)');
+			$('body').find('#modal-settings-form form').attr('action', '/archive_thesis/settings/updateYear/'+id)
+			$('body').find('#modal-settings-form form').attr('data-value', 'years-list');
+			$('body').find('.modal-title').html('Edit Year Level');
+			$('body').find('.modal-body input').attr('placeholder', 'Year Level (Eg. IV)');
 			// <-----start loading here --> //
 			$.ajax({
 				url: '/archive_thesis/settings/editYear/'+ id,
@@ -114,11 +114,11 @@ function settings(){
 				dataType: 'json',
 				success: function(e){
 					//role_id = e[0].id;
-					$('.modal-body input').attr('name', 'year');
-					$('.modal-body input').attr('value', e[0]['year']);
+					$('body').find('.modal-body input').attr('name', 'year');
+					$('body').find('.modal-body input').attr('value', e[0]['year']);
 					//$('.modal-body .form-group div').prepend('<input type="hidden" name ="role_id" value="'+role_id+'" />');
 					// <-----stop loading here --> //
-					$('#modal-settings-form').modal('show');
+					$('body').find('#modal-settings-form').modal('show');
 				}
 			});
 		}
@@ -129,7 +129,7 @@ function settings(){
 	});
 	
 	// deleting setting values
-	$('.settings-delete').click(function(){
+	$('body').on('click', '.settings-delete', function(){
 		id    = $(this).data('id');
 		value = $(this).data('value');
 		
@@ -174,7 +174,7 @@ function settings(){
 	//end
 
 	// -- before submitting form on this page -- //
-	$('.settings-form').submit(function(){
+	$('body').on('submit', '.settings-form', function(){
 		type = $(this).data('value');
 		action = $(this).attr('action');
 		value = $(this).find('input').val();
@@ -194,10 +194,11 @@ function settings(){
 				else if(type == 'years-list')
 					$('.'+type).html(e);
 
-				$(this).find('input').val('wahahah');
+				value = $(this).find('input').val();
 				$('#modal-settings-form').modal('hide');
 			}
 		});
+
 		return false;
 	});
 	

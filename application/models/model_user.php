@@ -3,7 +3,6 @@
 class Model_User extends CI_Model{
 	function __construct(){
 		$this->load->database();
-		$this->load->helper('security');
 	}
 
 	function addUser($user, $user_info){
@@ -42,14 +41,16 @@ class Model_User extends CI_Model{
 		if($credentials != null){
 
 			$where['username'] = $credentials['username'];
-			$where['password'] = do_hash($credentials['password']);
+			$where['password'] = $credentials['password'];
 
 			$this->db->where($where);
 			$list = $this->db->get('tbl_users');
+			
 		}
 		//---------use for getting a user-----//
 		else{
 			$list = $this->db->query('SELECT  user.id, user.username, user.password, info.id as info_id, info.first_name, info.middle_name, info.last_name, roles.id as role_id, roles.role FROM tbl_users as user, tbl_user_info as info, tbl_roles as roles WHERE user.user_info_id = info.id AND user.role_id = roles.id AND user.id = '.$id);
+			
 		}
 
 		return $list->row_array();

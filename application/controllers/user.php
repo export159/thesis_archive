@@ -110,15 +110,17 @@ class User extends CI_Controller {
 
 	public function login(){
 		if($this->session->userdata('user_id') == null){
-			$data = $this->input->post();
+			$data['username'] = $this->input->post('username');
+			$data['password'] = do_hash($this->input->post('password'));
 
 			$user = $this->model_user->getUser($data, null);
 			if($user != null){
 				$this->session->set_userdata('user_id', $user['id']);
-				header("location: ".base_url());
+				//header("location: ".base_url());
 			}else{
-				header("location: ".base_url());
+				//header("location: ".base_url());
 			}
+			print_r($user);
 		}else{
 			show_404();
 		}

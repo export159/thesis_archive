@@ -10,6 +10,24 @@
 	    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>public/css/bootstrap.css">
 	    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>public/css/bootstrap.css.map">
 	    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>public/css/bootstrap.min.css">
+	    <script type="text/javascript" src="<?php echo base_url(); ?>public/js/jquery.js"></script>
+		<script type="text/javascript" src="<?php echo base_url(); ?>public/js/bootstrap.js"></script>
+		<script type="text/javascript" src="<?php echo base_url(); ?>public/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="<?php echo base_url(); ?>public/js/npm.js"></script>
+		<script type="text/javascript" src="<?php echo base_url(); ?>public/js/settings.js"></script>
+		<script type="text/javascript" src="<?php echo base_url(); ?>public/js/user.js"></script>
+
+		<script type="text/javascript">
+		$(document).ready(function(e){
+
+			custom_functions();	
+			
+		});
+		function custom_functions(){
+			user();
+			settings();
+		}
+		</script>
 	</head>
 	<body>
 		<!-- header -->

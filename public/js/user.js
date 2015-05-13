@@ -3,14 +3,14 @@ function user(){
 		$('#modal-add-user').modal('show');
 	});
 
-	$('.user-delete').click(function(){
+	$('body').on('click', '.user-delete', function(event){
 		if(confirm('Do you want to delete this user?')){
 			id = $(this).data('id');
 			// -- start loading here -- //
 			$.ajax({
 				url: '/archive_thesis/user/delete/'+id,
 				data: {'status' : 'delete'},
-				type: 'get',
+				contentType: false,
 				success: function(e){
 			// -- stop loading here -- //
 					$('#users-list').html(e);

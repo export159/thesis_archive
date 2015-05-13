@@ -23,7 +23,7 @@
   				</div>
   				<div class="form-group">
     				<div class="col-sm-offset-1 col-sm-10">
-    					<input type="password" name="username" class="form-control" placeholder="Password....">
+    					<input type="password" name="password" class="form-control" placeholder="Password....">
     				</div>
   				</div>
   				<div class="form-group">
