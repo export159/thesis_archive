@@ -14,7 +14,7 @@
 </div>
 <div class="row well" >
 	<h4>Cateogries</h4>
-	<a class="show-setting-form" data-value="categories-add" href="#" data-toggle="modal">Add a Category</a>\
+	<a class="show-setting-form" data-value="categories-add" href="#" data-toggle="modal">Add a Category</a>
 	<div class="categories-list">
 		<?php
 			$data['header'] = 'Category';
@@ -60,8 +60,7 @@
        			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
    				<h4 class="modal-title" id="myModalLabel"></h4>
    			</div>
-   			<div class="modal-body">
-				<?php $this->load->view('forms/settings_form'); ?>     			
+   			<div class="modal-body">			
    			</div>
    			<div class="modal-footer">
       			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

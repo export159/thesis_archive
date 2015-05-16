@@ -58,6 +58,33 @@ class Settings extends CI_Controller {
 	}
 	//----end----//
 
+	//---- for javascript return ----//
+	function getForm($type, $settings = null, $id = 0){
+		if($this->session->userdata('user_id')){
+			if($type == 'add'){
+				$this->load->view('forms/settings_form');
+			}else if($type == 'edit'){
+				$settings;
+				if($settings == 'role'){
+					$setting = $this->editRole($id);
+				}else if($settings == 'category'){
+					$setting = $this->editCategory($id);
+				}else if($settings == 'course'){
+					$setting = $this->editCourse($id);
+				}else if($settings == 'year'){
+					$setting = $this->editYear($id);
+				}
+				
+				$data['value'] = $setting[0][$settings];
+				$this->load->view('forms/settings_form', $data);
+			}
+		}else{
+			show_404();
+		}
+	}
+
+	//---- end ----//
+
 
 
 	//---- functions ----//
@@ -114,7 +141,9 @@ class Settings extends CI_Controller {
 	public function editRole($id){
 		if($this->session->userdata('user_id') != null && $id != null){
 
-			echo json_encode($this->model_settings->getRole($id));
+			//echo json_encode($this->model_settings->getRole($id));
+
+			return $this->model_settings->getRole($id);
 
 			
 		}else{
@@ -125,7 +154,9 @@ class Settings extends CI_Controller {
 	public function editCategory($id){
 		if($this->session->userdata('user_id') != null && $id != null){
 
-			echo json_encode($this->model_settings->getCategory($id));
+			//echo json_encode($this->model_settings->getCategory($id));
+
+			return $this->model_settings->getCategory($id);
 
 			
 		}else{
@@ -136,9 +167,9 @@ class Settings extends CI_Controller {
 	public function editCourse($id){
 		if($this->session->userdata('user_id') != null && $id != null){
 
-			echo json_encode($this->model_settings->getCourse($id));
+			//echo json_encode($this->model_settings->getCourse($id));
 
-			
+			return $this->model_settings->getCourse($id);
 		}else{
 			show_404();
 		}
@@ -147,9 +178,9 @@ class Settings extends CI_Controller {
 	public function editYear($id){
 		if($this->session->userdata('user_id') != null && $id != null){
 
-			echo json_encode($this->model_settings->getYear($id));
+			//echo json_encode($this->model_settings->getYear($id));
 
-			
+			return $this->model_settings->getYear($id);
 		}else{
 			show_404();
 		}
