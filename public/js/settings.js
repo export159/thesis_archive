@@ -43,21 +43,6 @@ function settings(){
 			$('body').find('.modal-body input').attr('placeholder', 'Role');
 			// <-----start loading here --> //
 			showSettingsModal('edit', 'role', 'Role', id);
-			/*
-			$.ajax({
-				url: '/archive_thesis/settings/editRole/'+ id,
-				type: 'GET',
-				dataType: 'json',
-				success: function(e){
-					//role_id = e[0].id;
-					$('body').find('.modal-body input').attr('name', 'role');
-					$('body').find('.modal-body input').attr('value', e[0]['role']);
-					//$('.modal-body .form-group div').prepend('<input type="hidden" name ="role_id" value="'+role_id+'" />');
-					// <-----stop loading here --> //
-					$('body').find('#modal-settings-form').modal('show');
-				}
-			});
-			*/
 		}
 		else if(value == 'categories-edit'){
 			$('body').find('#modal-settings-form form').attr('action', '/archive_thesis/settings/updateCategory/'+id)
