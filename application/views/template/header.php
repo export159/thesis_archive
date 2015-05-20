@@ -45,12 +45,14 @@
 				<li role="presentation">
 					<a href="<?php echo base_url(); ?>theses" role="tab">Theses</a>
 				</li>
-				<li role="presentation">
-					<a href="<?php echo base_url(); ?>user" role="tab">Users</a>
-				</li>
-				<li role="presentation">
-					<a href="<?php echo base_url(); ?>settings" role="tab">General Settings</a>
-				</li>
+				<?php if(isset($user_role) && ($user_role == do_hash('Administrator'))): ?>
+					<li role="presentation">
+						<a href="<?php echo base_url(); ?>user" role="tab">Users</a>
+					</li>
+					<li role="presentation">
+						<a href="<?php echo base_url(); ?>settings" role="tab">General Settings</a>
+					</li>
+				<?php endif; ?>
 				<li role="presentation">
 					<a href="<?php echo base_url(); ?>user/logout" role="tab">Logout</a>
 				</li>

@@ -40,11 +40,10 @@ class Model_User extends CI_Model{
 		//---------use for logging in--------//
 		if($credentials != null){
 
-			$where['username'] = $credentials['username'];
-			$where['password'] = $credentials['password'];
-
-			$this->db->where($where);
-			$list = $this->db->get('tbl_users');
+			$this->db->select('u.id, u.username, r.role');
+			$this->db->from('tbl_users as u,tbl_roles as r');
+			$this->db->where('r.id = u.role_id AND u.username = \''.$credentials['username'].'\' AND u.password = \''.$credentials['password'].'\'');
+			$list = $this->db->get();
 			
 		}
 		//---------use for getting a user-----//

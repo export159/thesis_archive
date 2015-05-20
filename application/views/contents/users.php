@@ -1,7 +1,7 @@
 <div class="row">
 	<h3>Users</h3>
 	<a id="add-user-button" href="#" data-toggle="modal">Add User</a>
-	<div id="users-list">
+	<div class="well" id="users-list">
 		<?php $this->load->view('/forms/user_list_page', $users); ?>
 	</div>
 </div>

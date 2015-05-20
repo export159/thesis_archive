@@ -5,8 +5,9 @@ class Settings extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load->library('session');
+		$this->load->helper('security');
 
-		if($this->session->userdata('user_id') != null){
+		if($this->session->userdata('user_id') != null && $this->session->userdata('user_role') == do_hash('Administrator')){
 			$this->load->helper('url');
 			$this->load->helper('inflector'); // <-- para gumana an plural()
 			$this->load->library('session');
@@ -20,6 +21,7 @@ class Settings extends CI_Controller {
 	//----pages----//
 	public function index(){
 		$data['user_id'] = $this->session->userdata('user_id');
+		$data['user_role'] = $this->session->userdata('user_role');
 		$data['roles'] = $this->model_settings->getRoles();
 		$data['categories'] = $this->model_settings->getCategories();
 		$data['year_levels'] = $this->model_settings->getYears();

@@ -15,8 +15,9 @@ class User extends CI_Controller {
 	}
 	// pages -------------------------------------------------------------------------------------------
 	public function index(){
-		if($this->session->userdata('user_id') != null){
+		if($this->session->userdata('user_id') != null && $this->session->userdata('user_role') == do_hash('Administrator')){
 			$data['user_id'] = $this->session->userdata('user_id');
+			$data['user_role'] = $this->session->userdata('user_role');
 			$data['users'] = $this->model_user->getUsers();
 			$data['roles'] = $this->model_settings->getRoles();
 			$this->load->view('template/header', $data);
@@ -27,7 +28,7 @@ class User extends CI_Controller {
 		}
 	}
 	public function profile($id){
-		if($this->session->userdata('user_id') != null && $id != null){
+		if($this->session->userdata('user_id') != null && $id != null && $this->session->userdata('user_role') == do_hash('Administrator')){
 			$data['user_id'] = $this->session->userdata('user_id');
 			$data['user'] = $this->model_user->getUser(null, $id);
 
@@ -39,7 +40,7 @@ class User extends CI_Controller {
 		}
 	}
 	public function edit($id){
-		if($this->session->userdata('user_id') != null && $id != null){
+		if($this->session->userdata('user_id') != null && $id != null && $this->session->userdata('user_role') == do_hash('Administrator')){
 			$data['user_id'] = $this->session->userdata('user_id');
 			$data['user'] = $this->model_user->getUser(null, $id);
 			$data['roles'] = $this->model_settings->getRoles();
@@ -52,7 +53,7 @@ class User extends CI_Controller {
 		}
 	}
 	public function usersList(){
-		if($this->session->userdata('user_id') != null){
+		if($this->session->userdata('user_id') != null && $this->session->userdata('user_role') == do_hash('Administrator')){
 			$data['users'] = $this->model_user->getUsers();
 			$this->load->view('/forms/user_list_page', $data);
 		}else{
@@ -63,7 +64,7 @@ class User extends CI_Controller {
 
 	//functionality
 	public function add(){
-		if($this->session->userdata('user_id') != null && $this->input->post() != null){
+		if($this->session->userdata('user_id') != null && $this->input->post() != null && $this->session->userdata('user_role') == do_hash('Administrator')){
 			$user['username'] = $this->input->post('username');
 			$user['password'] = do_hash($this->input->post('password'));
 			$user['role_id'] = $this->input->post('role');
@@ -80,7 +81,7 @@ class User extends CI_Controller {
 		}
 	}
 	public function update($id){
-		if($this->session->userdata('user_id') != null && $this->input->post() != null){
+		if($this->session->userdata('user_id') != null && $this->input->post() != null && $this->session->userdata('user_role') == do_hash('Administrator')){
 			$user['username'] = $this->input->post('username');
 			$user['password'] = do_hash($this->input->post('password'));
 			$user['user_info_id'] = $this->input->post('user_info_id');
@@ -99,7 +100,7 @@ class User extends CI_Controller {
 		}
 	}
 	public function delete($id){
-		if($this->session->userdata('user_id') != null && $this->input->get() != null){
+		if($this->session->userdata('user_id') != null && $this->input->get() != null && $this->session->userdata('user_role') == do_hash('Administrator')){
 			$this->model_user->deleteUser($id);
 			$this->usersList();
 		}
@@ -116,10 +117,12 @@ class User extends CI_Controller {
 			$user = $this->model_user->getUser($data, null);
 			if($user != null){
 				$this->session->set_userdata('user_id', $user['id']);
+				$this->session->set_userdata('user_role', do_hash($user['role']));
 				header("location: ".base_url());
 			}else{
 				header("location: ".base_url());
 			}
+			
 		}else{
 			show_404();
 		}
@@ -127,6 +130,7 @@ class User extends CI_Controller {
 
 	public function logout(){
 		$this->session->set_userdata('user_id', null);
+		$this->session->set_userdata('user_role', null);
 		header("location: ".base_url());
 	}
 }

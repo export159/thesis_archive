@@ -1,5 +1,5 @@
 <?php if($user_id == null): ?>
-	<div class="row">
+	<div class="row well">
 			<form class="form form-horizontal" action="<?php echo base_url(); ?>user/login" method="POST">
 				<legend class="col-sm-offset-4 col-sm-3">Sign in</legend>
 				<div class="form-group">
