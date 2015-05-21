@@ -16,6 +16,7 @@
 		<script type="text/javascript" src="<?php echo base_url(); ?>public/js/npm.js"></script>
 		<script type="text/javascript" src="<?php echo base_url(); ?>public/js/settings.js"></script>
 		<script type="text/javascript" src="<?php echo base_url(); ?>public/js/user.js"></script>
+		<script type="text/javascript" src="<?php echo base_url(); ?>public/js/thesis.js"></script>
 
 		<script type="text/javascript">
 		$(document).ready(function(e){
@@ -26,6 +27,7 @@
 		function custom_functions(){
 			user();
 			settings();
+			thesis();
 		}
 		</script>
 	</head>
