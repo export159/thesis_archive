@@ -17,7 +17,7 @@
 	</div>
 	<div class="form-group">
 		<div class="col-sm-offset-1 col-sm-10">
-			<select class="form-control" name="course">
+			<select class="form-control" name="res_course[]">
 				<option value="0">- Select Course -</option>
 				<?php foreach($courses as $course): ?>
 					<option value="<?php echo $course['id']; ?>">
@@ -29,7 +29,7 @@
 	</div>
 	<div class="form-group">
 		<div class="col-sm-offset-1 col-sm-10">
-			<select class="form-control" name="year">
+			<select class="form-control" name="res_year[]">
 				<option value="0">- Select Course -</option>
 				<?php foreach($years as $year): ?>
 					<option value="<?php echo $year['id']; ?>">

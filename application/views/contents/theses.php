@@ -8,7 +8,7 @@
 
 <!-- modals for theses -->
 <div id="modal-thesis" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="AddThesis" aria-hidden="true">
-	<form class="form form-horizontal" action="<?php echo base_url(); ?>theses/add" method="POST">
+	<form id="thesis_form" class="form form-horizontal" action="<?php echo base_url(); ?>theses/add" method="POST">
   	<div class="modal-dialog modal-sm">
     	<div class="modal-content">
       		<div class="modal-header">

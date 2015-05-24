@@ -31,11 +31,12 @@
 	</div>
 </div>
 <hr />
-<h4>Researchers</h4>
+<h5>Researchers</h5>
 <?php 
   $data['years'] = $years;
   $data['courses'] = $courses;
   $this->load->view('forms/researchers_form', $data); 
+  $this->load->view('forms/researchers_form', $data);
 ?>
 <div class="form-group">
 <div class="col-sm-offset-1 col-sm-10">
